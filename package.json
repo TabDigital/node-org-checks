@@ -1,0 +1,31 @@
+{
+  "name": "github-security-checks",
+  "version": "1.0.0",
+  "description": "Perform security checks on github",
+  "main": "index.js",
+  "scripts": {
+    "start": "./scripts/start",
+    "start": "standard"
+  },
+  "repository": "TabDigital/github-security-checks",
+  "keywords": [
+    "check",
+    "security",
+    "github"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "github-credential-scraper": "^1.0.0",
+    "tape": "^4.4.0"
+  },
+  "devDependencies": {
+    "dependency-check": "^2.5.1",
+    "istanbul": "^0.4.1",
+    "standard": "^5.4.1",
+    "tape": "^4.4.0"
+  },
+  "files": [
+    "index.js",
+    "bin/*"
+  ]
+}
