@@ -4,9 +4,17 @@
 
 Perform security checks on GitHub.
 
+## Checks
+- [scrape credentials](https://github.com/TabDigital/node-github-credential-scraper)
+
 ## Installation
 ```sh
 $ git clone https://github.com/TabDigital/github-security-checks
+```
+
+## Usage
+```sh
+$ GITHUB_USER=foobar GITHUB_TOKEN=asdfasdf ./scripts/start
 ```
 
 ## License
