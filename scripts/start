@@ -1,3 +1,8 @@
 #!/bin/sh
 
-node .
+hipchat_room="2068494"
+hipchat_bot="github-sec"
+
+node ./ \
+  | node ./fmt \
+  | ./hipchat-cli/hipchat_room_message -r "$hipchat_room" -f "$hipchat_bot"

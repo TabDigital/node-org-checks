@@ -5,7 +5,6 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "./scripts/start",
     "start": "standard"
   },
   "repository": "TabDigital/github-security-checks",
@@ -17,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "github-credential-scraper": "^1.0.0",
+    "tap-parser": "^1.2.2",
     "tape": "^4.4.0"
   },
   "devDependencies": {

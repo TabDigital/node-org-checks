@@ -1,0 +1,3 @@
+[submodule "hipchat-cli"]
+	path = hipchat-cli
+	url = https://github.com/hipchat/hipchat-cli
