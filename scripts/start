@@ -1,15 +1,17 @@
 #!/bin/bash
 
-dirname=$(dirname "$(readlink -f "$0")")
+dirname=$(dirname "$0")
 
 hipchat_room="2068494"
 hipchat_bot="github-sec"
 tap_xunit="$dirname/../node_modules/.bin/tap-xunit"
 
-mkfifo xunit_stream
-"$tap_xunit" < xunit_stream > /tmp/xunit.xml
+mkdir ./tmp
+node ./ > ./tmp/log
 
-node ./ \
-  | tee xunit_stream \
-  | node ./fmt \
+node ./fmt < ./tmp/log \
   | ./hipchat-cli/hipchat_room_message -r "$hipchat_room" -f "$hipchat_bot"
+
+"$tap_xunit" < ./tmp/log > /tmp/xunit.xml
+
+rm -rf ./tmp
