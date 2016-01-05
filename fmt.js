@@ -6,8 +6,8 @@ const ws = parser(function (results) {
   const status = results.ok ? 'PASSED' : 'FAILED'
   if (!results.ok) return
   var fmt = 'Status: ' + status + '\n'
-  fmt += 'Count: ' + results.count + '\n'
-  fmt += 'Failed: ' + results.fail + '\n'
+  fmt += 'Count: ' + results.count || 0 + '\n'
+  fmt += 'Failed: ' + results.fail || 0 + '\n'
   fmt += 'Visit ' + goRoute + ' for test details\n'
   process.stdout.write(fmt)
 })
