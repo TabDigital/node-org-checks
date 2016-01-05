@@ -16,6 +16,11 @@ $ git clone https://github.com/TabDigital/github-security-checks
 $ GITHUB_USER=foobar GITHUB_TOKEN=asdfasdf ./scripts/start
 ```
 
+## Variables
+- `GITHUB_USER` - user for the GitHub Oauth api
+- `GITHUB_TOKEN` - token for the GitHub Oauth api
+- `HIPCHAT_TOKEN` - token for the HipChat api
+
 ## Copyright
 Tab Digital
 
