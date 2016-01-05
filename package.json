@@ -2,6 +2,7 @@
   "name": "github-security-checks",
   "version": "1.0.0",
   "description": "Perform security checks on github",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "./scripts/start",
