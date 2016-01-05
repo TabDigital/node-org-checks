@@ -2,14 +2,13 @@ const parser = require('tap-parser')
 
 const goRoute = 'https://go.tabdigital.com.au/go/tab/pipeline/history/GithubSecurityChecks'
 
-
 const ws = parser(function (results) {
+  const status = results.ok ? 'PASSED' : 'FAILED'
   if (!results.ok) return
-  const fmt = `Status: ${results.ok ? 'PASSED' : 'FAILED'}
-    Count: ${results.count}
-    Failed: ${results.fail}
-    Visit ${goRoute} for test details
-  `
+  var fmt = 'Status: ' + status + '\n'
+  fmt += 'Count: ' + results.count + '\n'
+  fmt += 'Failed: ' + results.fail + '\n'
+  fmt += 'Visit ' + goRoute + ' for test details\n'
   process.stdout.write(fmt)
 })
 
