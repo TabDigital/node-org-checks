@@ -16,8 +16,8 @@ $ git clone https://github.com/TabDigital/github-security-checks
 $ GITHUB_USER=foobar GITHUB_TOKEN=asdfasdf ./scripts/start
 ```
 
-## License
-[MIT](https://tldrlegal.com/license/mit-license)
+## Copyright
+Tab Digital
 
 [0]: https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
