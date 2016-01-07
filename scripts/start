@@ -6,8 +6,8 @@ hipchat_room="2068494"
 hipchat_bot="github-sec"
 tap_xunit="$dirname/../node_modules/.bin/tap-xunit"
 
-mkdir ./tmp
-mkdir ./artifacts
+[ -d ./tmp ] || mkdir ./tmp
+[ -d ./artifacts ] || mkdir ./artifacts
 node ./ > ./tmp/log
 
 node ./fmt < ./tmp/log \
