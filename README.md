@@ -56,6 +56,19 @@ const inputs = [ checkCredentials(org, ghAuth) ]
 orgChecks(inputs, outputs)
 ```
 
+## Device format
+Each input should return data in the following format to the device:
+```json
+{ "name": "scraper:aws-keys", "type": "error", data": "https://binbaz.com" }
+{ "name": "scraper:aws-keys", "type": "error", "data": "https://foobar.com" }
+{ "name": "scraper:aws-keys", "type": "summary", "data": { total: 40, pass: 24, fail: 16 } }
+```
+There are 2 types that can be returned:
+- __error:__ an error has occured, a string is included to point to the
+  corresponding error.
+- __summary:__ a test has finished running and has a `total`, `pass` and `fail`
+  count. Useful for short form reporters.
+
 ## License
 MIT
 
