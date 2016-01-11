@@ -56,8 +56,8 @@ const checks = [ checkCredentials(org, ghAuth) ]
 orgChecks(checks, reporters)
 ```
 
-## Copyright
-Tab Digital
+## License
+MIT
 
 [0]: https://img.shields.io/badge/stability-experimental-orange.svg?style=flat-square
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
