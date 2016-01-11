@@ -27,10 +27,8 @@ if (!argv._.length) {
 // fmt json to hipchat html and send it
 // obj -> null
 function main () {
-  const opts = {
-  
-  }
-  https.request
+  const opts = {}
+  https.request(opts)
 }
 
 // print usage & exit

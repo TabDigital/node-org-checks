@@ -4,30 +4,6 @@
 Organization monitoring and reporting to ensure standards are in place for
 every aspect of an organization.
 
-- check existance of `AWS_KEY`, `.pem`, `id_rsa` and `.key` files
-- report to hipchat
-
-## Installation
-```sh
-$ git clone https://github.com/TabDigital/org-checks
-```
-
-## Usage
-```js
-const checkCredentials = require('org-checks/checks/credentials')
-const toHipchat = require('monitor/reporters/hipchat')
-const toHtml = require('monitor/reporters/html')
-const aggregator = require('org-checks')
-
-const hipchatAuth = { room: '208899', token: '<token>' }
-const ghAuth = { username: 'foobar', token: '<token>' }
-const org = 'tabDigital'
-
-const reporters = [ toHipchat(hipchatAuth), toHtml('/tmp/org-status.html') ]
-const checks = [ checkCredentials(org, ghAuth) ]
-org-checks(checks, reporters)
-```
-
 ## Architecture
 ```txt
  ┌──────┐    ┌──────┐   ┌──────┐
@@ -49,6 +25,34 @@ org-checks(checks, reporters)
  │ chat │    │email │   │ html │
  │      │    │      │   │      │
  └──────┘    └──────┘   └──────┘
+```
+
+## Reporters
+- hipchat
+
+## Backends
+- __credential-scraper:__ check existance of `AWS_KEY`, `.pem`, `id_rsa` and
+  `.key` files
+
+## Installation
+```sh
+$ git clone https://github.com/TabDigital/org-checks
+```
+
+## Usage
+```js
+const checkCredentials = require('org-checks/checks/credentials')
+const toHipchat = require('monitor/reporters/hipchat')
+const toHtml = require('monitor/reporters/html')
+const aggregator = require('org-checks')
+
+const hipchatAuth = { room: '208899', token: '<token>' }
+const ghAuth = { username: 'foobar', token: '<token>' }
+const org = 'tabDigital'
+
+const reporters = [ toHipchat(hipchatAuth), toHtml('/tmp/org-status.html') ]
+const checks = [ checkCredentials(org, ghAuth) ]
+org-checks(checks, reporters)
 ```
 
 ## Copyright

@@ -1,4 +1,4 @@
-const scrapeCreds = require('github-credential-scraper')
+const scrapeCreds = require('./checks/credentials')
 const assert = require('assert')
 const test = require('tape')
 

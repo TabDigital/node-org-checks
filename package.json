@@ -5,7 +5,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "standard"
+    "deps": "dependency-check . && dependency-check . --extra --no-dev",
+    "test": "standard && npm run deps && tape test/*"
   },
   "repository": "TabDigital/org-checks",
   "keywords": [
@@ -15,17 +16,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "cliclopts": "^1.1.1",
     "ghutils": "^3.2.0",
-    "github-credential-scraper": "^2.0.0",
-    "map-limit": "0.0.1",
-    "minimist": "^1.2.0",
-    "pump": "^1.0.1",
-    "readable-stream": "^2.0.5",
-    "tap-parser": "^1.2.2",
-    "tap-xunit": "^1.3.1",
-    "tape": "^4.4.0",
-    "text-table": "^0.2.0"
+    "map-limit": "0.0.1"
   },
   "devDependencies": {
     "dependency-check": "^2.5.1",
@@ -36,8 +28,5 @@
   "files": [
     "index.js",
     "bin/*"
-  ],
-  "bin": {
-    "org-checks": "./bin/cli.js"
-  }
+  ]
 }
