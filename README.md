@@ -45,18 +45,18 @@ $ git clone https://github.com/TabDigital/org-checks
 
 ## Usage
 ```js
-const checkCredentials = require('org-checks/inputs/credentials')
-const toHipchat = require('monitor/outputs/hipchat')
-const toHtml = require('monitor/outputs/html')
+const checkCredentials = require('org-checks/input/credentials')
+const toHipchat = require('monitor/output/hipchat')
+const toHtml = require('monitor/output/html')
 const orgChecks = require('org-checks')
 
 const hipchatAuth = { room: '208899', token: '<token>' }
 const ghAuth = { username: 'foobar', token: '<token>' }
 const org = 'tabDigital'
 
-const outputs = [ toHipchat(hipchatAuth), toHtml('/tmp/org-status.html') ]
-const inputs = [ checkCredentials(org, ghAuth) ]
-orgChecks(inputs, outputs)
+const output = [ toHipchat(hipchatAuth), toHtml('/tmp/org-status.html') ]
+const input = [ checkCredentials(org, ghAuth) ]
+orgChecks(input, output)
 ```
 
 ## Device format

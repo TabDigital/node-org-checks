@@ -5,16 +5,16 @@ module.exports = device
 
 // creat a new device that maps input to output
 // ([fn], [fn], fn) -> null
-function device (inputs, outputs, cb) {
-  assert.ok(inputs, 'inputs exists')
-  assert.ok(outputs, 'outputs exists')
+function device (input, output, cb) {
+  assert.ok(input, 'input exists')
+  assert.ok(output, 'output exists')
 
-  inputs = Array.isArray(inputs) ? inputs : [ inputs ]
-  outputs = Array.isArray(outputs) ? outputs : [ outputs ]
+  input = Array.isArray(input) ? input : [ input ]
+  output = Array.isArray(output) ? output : [ output ]
 
-  mapLimit(inputs, Infinity, inputIterator, function (err, res) {
+  mapLimit(input, Infinity, inputIterator, function (err, res) {
     if (err) return cb(err)
-    mapLimit(outputs, Infinity, outputIterator(res), function (err, res) {
+    mapLimit(output, Infinity, outputIterator(res), function (err, res) {
       if (err) return cb(err)
     })
   })
