@@ -27,10 +27,11 @@ every aspect of an organization.
  └──────┘    └──────┘   └──────┘
 ```
 
-## Reporters
+## Outputs
 - hipchat
+- stdout
 
-## Backends
+## Inputs
 - __credential-scraper:__ check existance of `AWS_KEY`, `.pem`, `id_rsa` and
   `.key` files
 
