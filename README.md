@@ -16,6 +16,29 @@ $ git clone https://github.com/TabDigital/github-security-checks
 $ GITHUB_USER=foobar GITHUB_TOKEN=asdfasdf ./scripts/start
 ```
 
+## Architecture
+```txt
+ ┌──────┐    ┌──────┐   ┌──────┐
+ │check │    │assert│   │verify│
+ │creden│    │tests │   │ org  │
+ │tials │    │exist │   │ 2FA  │
+ └──────┘    └──────┘   └──────┘
+     │           │          │
+     └─────┬─────┴──────────┘
+           │
+     ┌─────▼────────┐    ┌─────┐
+     │  aggregator  ◀ ─ ─│creds│
+     └──────────────┘    └─────┘
+             │
+     ┌───────┴───┬──────────┐
+     │           │          │
+ ┌───▼──┐    ┌───▼──┐   ┌───▼──┐
+ │ hip- │    │      │   │      │
+ │ chat │    │email │   │  ui  │
+ │      │    │      │   │      │
+ └──────┘    └──────┘   └──────┘
+```
+
 ## Variables
 - `GITHUB_USER` - user for the GitHub Oauth api
 - `GITHUB_TOKEN` - token for the GitHub Oauth api
