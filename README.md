@@ -32,8 +32,11 @@ every aspect of an organization.
 - stdout
 
 ## Inputs
-- __credential-scraper:__ check existance of `AWS_KEY`, `.pem`, `id_rsa` and
-  `.key` files
+### credentials(organization, opts)
+Check existance of `AWS_KEY`, `.pem`, `id_rsa` and `.key` files. Opts has the
+following fields:
+- __user:__ GitHub user (required)
+- __token:__ GitHub OpenAuth token (required)
 
 ## Installation
 ```sh
