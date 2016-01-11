@@ -1,7 +1,7 @@
 const HipchatClient = require('hipchat-client')
 const assert = require('assert')
 
-const name = 'github-checks'
+const name = 'github-inputs'
 
 module.exports = toHipchat
 
