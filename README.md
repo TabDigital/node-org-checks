@@ -44,7 +44,7 @@ $ git clone https://github.com/TabDigital/org-checks
 const checkCredentials = require('org-checks/checks/credentials')
 const toHipchat = require('monitor/reporters/hipchat')
 const toHtml = require('monitor/reporters/html')
-const aggregator = require('org-checks')
+const orgChecks = require('org-checks')
 
 const hipchatAuth = { room: '208899', token: '<token>' }
 const ghAuth = { username: 'foobar', token: '<token>' }
@@ -52,7 +52,7 @@ const org = 'tabDigital'
 
 const reporters = [ toHipchat(hipchatAuth), toHtml('/tmp/org-status.html') ]
 const checks = [ checkCredentials(org, ghAuth) ]
-org-checks(checks, reporters)
+orgChecks(checks, reporters)
 ```
 
 ## Copyright

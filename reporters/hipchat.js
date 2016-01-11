@@ -1,39 +1,35 @@
-#!/usr/bin/env node
-const cliclopts = require('cliclopts')
-const minimist = require('minimist')
-const https = require('https')
-const util = require('util')
+const HipchatClient = require('hipchat-client')
+const assert = require('assert')
 
-const opts = cliclopts([
-  { name: 'help', abbr: 'h', boolean: true },
-  { name: 'version', abbr: 'v', boolean: true }
-])
+const name = 'github-checks'
 
-const argv = minimist(process.argv.slice(2), opts.options())
+module.exports = toHipchat
 
-// parse options
-if (!argv._.length) {
-  process.stdout.write('Error: no command specified\n')
-  usage(1)
-} else {
-  main(argv, function (err) {
-    if (err) {
-      process.stderr.write(util.format(err) + '\n')
-      process.exit(1)
+// format stuff to hipchat
+// opts: { str:room, str:token }
+// obj -> (obj, (err, res)) -> null
+function toHipchat (opts) {
+  assert.equal(typeof opts, 'object', 'opts should be an object')
+  assert.equal(typeof opts.token, 'string', 'opts.token should be an string')
+  assert.equal(typeof opts.room, 'string', 'opts.room should be an string')
+
+  const hipchat = new HipchatClient(opts.token)
+
+  return function toHipchat (data, cb) {
+    const msg = {
+      room_id: opts.room,
+      from: name,
+      message: format(data)
     }
-  })
+
+    hipchat.api.rooms.message(msg, function (err, res) {
+      if (err) return cb(err)
+    })
+  }
 }
 
-// fmt json to hipchat html and send it
-// obj -> null
-function main () {
-  const opts = {}
-  https.request(opts)
-}
-
-// print usage & exit
-// num? -> null
-function usage (exitCode) {
-  console.log('echo <json> | hipchat -[rtn]')
-  process.exit(exitCode)
+// format data for hipchat html
+// obj -> str
+function format (data) {
+  return 'hello world'
 }

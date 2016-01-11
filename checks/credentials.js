@@ -6,12 +6,11 @@ module.exports = awsCredentialScraper
 
 // Naive AWS credential scraper for git
 // (str, obj) -> null
-function awsCredentialScraper (org, auth, cb) {
-  assert.equal(typeof org, 'string', new TypeError('org must be a string'))
-  assert.equal(typeof auth, 'object', new TypeError('auth must be an object'))
-  assert.equal(typeof auth.user, 'string', new TypeError('user must be a str'))
-  assert.equal(typeof auth.token, 'string', new TypeError('token must be a str'))
-  assert.equal(typeof cb, 'function', new TypeError('cb must be a function'))
+function awsCredentialScraper (org, auth) {
+  assert.equal(typeof org, 'string', 'org must be a string')
+  assert.equal(typeof auth, 'object', 'auth must be an object')
+  assert.equal(typeof auth.user, 'string', 'auth.user must be a string')
+  assert.equal(typeof auth.token, 'string', 'auth.token must be a string')
 
   const opts = ghutils.makeOptions(auth)
   const uris = [
@@ -45,22 +44,24 @@ function awsCredentialScraper (org, auth, cb) {
     }
   ]
 
-  mapLimit(uris, Infinity, iterator, cb)
+  return function (cb) {
+    mapLimit(uris, Infinity, iterator, cb)
 
-  function iterator (opt, cb) {
-    const name = opt.name
-    const uri = opt.uri
+    function iterator (opt, cb) {
+      const name = opt.name
+      const uri = opt.uri
 
-    ghutils.ghget(auth, uri, opts, function (err, res) {
-      if (err) return cb(err)
-      if (res.total_count === 0) return cb(null, [])
+      ghutils.ghget(auth, uri, opts, function (err, res) {
+        if (err) return cb(err)
+        if (res.total_count === 0) return cb(null, [])
 
-      const urls = res.items.reduce(function (arr, item) {
-        arr.push(item.html_url)
-        return arr
-      }, [])
+        const urls = res.items.reduce(function (arr, item) {
+          arr.push(item.html_url)
+          return arr
+        }, [])
 
-      cb(null, { name: name, data: urls })
-    })
+        cb(null, { name: name, data: urls })
+      })
+    }
   }
 }

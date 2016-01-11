@@ -1,24 +1,31 @@
-const scrapeCreds = require('./checks/credentials')
+const mapLimit = require('map-limit')
 const assert = require('assert')
-const test = require('tape')
 
-const ghToken = process.env.GITHUB_TOKEN
-const ghUser = process.env.GITHUB_USER
+module.exports = device
 
-assert.ok(ghToken, 'github token exists')
-assert.ok(ghUser, 'github user exists')
+// creat a new device that maps input to output
+// ([fn], [fn], fn) -> null
+function device (inputs, outputs, cb) {
+  assert.ok(inputs, 'inputs exists')
+  assert.ok(outputs, 'outputs exists')
 
-const auth = { token: ghToken, user: ghUser }
+  inputs = Array.isArray(inputs) ? inputs : [ inputs ]
+  outputs = Array.isArray(outputs) ? outputs : [ outputs ]
 
-scrapeCreds('TabDigital', auth, function (err, res) {
-  assert.ifError(err)
-  res.forEach(function (obj) {
-    test(obj.name, function (t) {
-      if (!obj.data.length) return t.pass('no errors')
-      obj.data.forEach(function (str) {
-        t.fail(str)
-      })
-      t.end()
+  mapLimit(inputs, Infinity, inputIterator, function (err, res) {
+    if (err) return cb(err)
+    mapLimit(outputs, Infinity, outputIterator(res), function (err, res) {
+      if (err) return cb(err)
     })
   })
-})
+
+  function inputIterator (fn, cb) {
+    fn(cb)
+  }
+
+  function outputIterator (data) {
+    return function (fn, cb) {
+      fn(data, cb)
+    }
+  }
+}
