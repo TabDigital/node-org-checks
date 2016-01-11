@@ -1,5 +1,5 @@
 {
-  "name": "github-security-checks",
+  "name": "org-checks",
   "version": "1.0.0",
   "description": "Perform security checks on github",
   "private": true,
@@ -7,7 +7,7 @@
   "scripts": {
     "start": "standard"
   },
-  "repository": "TabDigital/github-security-checks",
+  "repository": "TabDigital/org-checks",
   "keywords": [
     "check",
     "security",
@@ -38,6 +38,6 @@
     "bin/*"
   ],
   "bin": {
-    "github-security-checks": "./bin/cli.js"
+    "org-checks": "./bin/cli.js"
   }
 }
