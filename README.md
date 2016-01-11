@@ -12,8 +12,17 @@ $ git clone https://github.com/TabDigital/github-security-checks
 ```
 
 ## Usage
-```sh
-$ GITHUB_USER=foobar GITHUB_TOKEN=asdfasdf ./scripts/start
+```js
+const checkCredentials = require('monitorg/checks/credentials')
+const toHipchat = require('monitor/reporters/hipchat')
+const aggregator = require('monitorg')
+
+const hipchatAuth = { room: '208899', name: 'monitorg', token: '<token>' }
+const ghAuth = { username: 'foobar', token: '<token>' }
+const org = 'tabDigital'
+
+const checks = [ checkCredentials(org, ghAuth) ]
+monitorg(checks, toHipchat(hipchatAuth))
 ```
 
 ## Architecture
@@ -38,11 +47,6 @@ $ GITHUB_USER=foobar GITHUB_TOKEN=asdfasdf ./scripts/start
  │      │    │      │   │      │
  └──────┘    └──────┘   └──────┘
 ```
-
-## Variables
-- `GITHUB_USER` - user for the GitHub Oauth api
-- `GITHUB_TOKEN` - token for the GitHub Oauth api
-- `HIPCHAT_TOKEN` - token for the HipChat api
 
 ## Copyright
 Tab Digital
