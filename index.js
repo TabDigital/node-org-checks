@@ -10,15 +10,15 @@ assert.ok(ghUser, 'github user exists')
 
 const auth = { token: ghToken, user: ghUser }
 
-test('should not expose any AWS credentials on GitHub', function (t) {
-  t.plan(1)
-  scrapeCreds('TabDigital', auth, function (err, res) {
-    t.ifError(err)
-    res = Array.isArray(res) ? res : [ res ]
-    res.forEach(function (url) {
-      // skip over credential check repo
-      if (/node-github-credential-scraper/.test(url)) return
-      t.fail(url)
+scrapeCreds('TabDigital', auth, function (err, res) {
+  assert.ifError(err)
+  res.forEach(function (obj) {
+    test(obj.name, function (t) {
+      if (!obj.data.length) return t.pass('no errors')
+      obj.data.forEach(function (str) {
+        t.fail(str)
+      })
+      t.end()
     })
   })
 })

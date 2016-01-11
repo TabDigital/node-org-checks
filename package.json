@@ -15,10 +15,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "github-credential-scraper": "^1.0.0",
+    "github-credential-scraper": "^2.0.0",
+    "readable-stream": "^2.0.5",
     "tap-parser": "^1.2.2",
     "tap-xunit": "^1.3.1",
-    "tape": "^4.4.0"
+    "tape": "^4.4.0",
+    "text-table": "^0.2.0"
   },
   "devDependencies": {
     "dependency-check": "^2.5.1",
