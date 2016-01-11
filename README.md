@@ -46,9 +46,9 @@ $ git clone https://github.com/TabDigital/org-checks
 ## Usage
 ```js
 const checkCredentials = require('org-checks/input/credentials')
-const toHipchat = require('monitor/output/hipchat')
-const toHtml = require('monitor/output/html')
-const orgChecks = require('org-checks')
+const toHipchat = require('org-checks/output/hipchat')
+const toHtml = require('org-checks/output/html')
+const orgChecks = require('org-checks/device')
 
 const hipchatAuth = { room: '208899', token: '<token>' }
 const ghAuth = { username: 'foobar', token: '<token>' }

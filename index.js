@@ -1,31 +1,10 @@
-const mapLimit = require('map-limit')
-const assert = require('assert')
+module.exports = exports.device = require('./device')
 
-module.exports = device
+exports.input = {
+  credentials: require('./input/credentials')
+}
 
-// creat a new device that maps input to output
-// ([fn], [fn], fn) -> null
-function device (input, output, cb) {
-  assert.ok(input, 'input exists')
-  assert.ok(output, 'output exists')
-
-  input = Array.isArray(input) ? input : [ input ]
-  output = Array.isArray(output) ? output : [ output ]
-
-  mapLimit(input, Infinity, inputIterator, function (err, res) {
-    if (err) return cb(err)
-    mapLimit(output, Infinity, outputIterator(res), function (err, res) {
-      if (err) return cb(err)
-    })
-  })
-
-  function inputIterator (fn, cb) {
-    fn(cb)
-  }
-
-  function outputIterator (data) {
-    return function (fn, cb) {
-      fn(data, cb)
-    }
-  }
+exports.output = {
+  hipchat: require('./output/hipchat'),
+  stdout: require('./output/stdout')
 }
