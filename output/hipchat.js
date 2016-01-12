@@ -1,7 +1,9 @@
 const HipchatClient = require('hipchat-client')
+const toHtml = require('vdom-to-html')
+const h = require('virtual-dom/h')
 const assert = require('assert')
 
-const name = 'github-input'
+const name = 'github-checks'
 
 module.exports = toHipchat
 
@@ -19,7 +21,8 @@ function toHipchat (opts) {
     const msg = {
       room_id: opts.room,
       from: name,
-      message: format(data)
+      message: formatData(data),
+      card: createCard(data)
     }
 
     hipchat.api.rooms.message(msg, function (err, res) {
@@ -28,8 +31,35 @@ function toHipchat (opts) {
   }
 }
 
-// format data for hipchat html
+// format data to create a hipchat card
 // obj -> str
-function format (data) {
-  return 'hello world'
+function formatData (data) {
+  const innerTable = [
+    h('tr', [
+      h('td', h('b', 'name')),
+      h('td', h('b', 'value'))
+    ])
+  ].concat(formatData(data))
+
+  return toHtml(h('table', innerTable))
+
+  function formatData (data) {
+    return data.reduce(function (arr, obj) {
+      if (obj.type !== 'summary') return arr
+      const el = h('tr', [
+        h('td', obj.name),
+        h('td', obj.data.fail + ' issues')
+      ])
+      arr.push(el)
+      return arr
+    }, [])
+  }
+}
+
+// create card metadata
+// https://developer.atlassian.com/hipchat/guide/hipchat-ui-extensions/cards
+// https://www.hipchat.com/docs/apiv2/method/send_room_notification
+// obj -> str
+function createCard (data) {
+  return { stye: 'application', title: name }
 }

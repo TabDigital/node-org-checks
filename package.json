@@ -18,7 +18,9 @@
   "dependencies": {
     "ghutils": "^3.2.0",
     "hipchat-client": "^1.0.4",
-    "map-limit": "0.0.1"
+    "map-limit": "0.0.1",
+    "vdom-to-html": "^2.2.0",
+    "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
     "dependency-check": "^2.5.1",

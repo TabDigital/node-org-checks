@@ -53,12 +53,6 @@ function awsCredentialScraper (org, auth, opts) {
         return total.concat(arr)
       }, [])
 
-      const failCount = flat.length - uris.length
-      flat.push({
-        name: 'credentials',
-        type: 'summary',
-        data: { fail: failCount }
-      })
       cb(null, flat)
     })
 
