@@ -15,7 +15,7 @@ every aspect of an organization.
      └─────┬─────┴──────────┘
            │
      ┌─────▼────────┐    ┌─────┐
-     │  aggregator  ◀ ─ ─│creds│
+     │    device    ◀ ─ ─│creds│
      └──────────────┘    └─────┘
              │
      ┌───────┴───┬──────────┐
@@ -27,16 +27,21 @@ every aspect of an organization.
  └──────┘    └──────┘   └──────┘
 ```
 
-## Outputs
-- hipchat
-- stdout
-
-## Inputs
+## Input
 ### credentials(organization, opts)
 Check existance of `AWS_KEY`, `.pem`, `id_rsa` and `.key` files. Opts has the
 following fields:
 - __user:__ GitHub user (required)
 - __token:__ GitHub OpenAuth token (required)
+
+## Output
+### stdout(opts)
+Report to stdout. If `opts.summary=true` it will report a summary only.
+
+### hipchat(opts)
+Report a summary to HipChat. Opts has the following fields:
+- __token:__ HipChat authentication token
+- __room:__ room id to report to
 
 ## Installation
 ```sh
