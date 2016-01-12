@@ -67,9 +67,9 @@ orgChecks(input, output)
 ## Device format
 Each input should return data in the following format to the device:
 ```json
-{ "name": "credentials:aws-keys", "type": "error", data": "https://binbaz.com" }
+{ "name": "credentials:aws-keys", "type": "error", "data": "https://binbaz.com" }
 { "name": "credentials:.pem", "type": "error", "data": "https://foobar.com" }
-{ "name": "credentials:aws-keys", "type": "summary", "data": { total: 40, pass: 24, fail: 16 } }
+{ "name": "credentials:aws-keys", "type": "summary", "data": { "total": 40, "pass": 24, "fail": 16 } }
 ```
 There are 2 types that can be returned:
 - __error:__ an error has occured, a string is included to point to the
