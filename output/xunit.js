@@ -42,7 +42,7 @@ function createXml (data) {
         return obj
       }
 
-      if (chunk.type === 'error') {
+      if (chunk.type === 'fail') {
         if (!obj[chunk.name]) obj[chunk.name] = { errors: [] }
         obj[chunk.name].errors.push(chunk.data)
 

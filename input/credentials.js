@@ -65,7 +65,7 @@ function awsCredentialScraper (org, auth, opts) {
         if (res.total_count === 0) return cb(null, [])
 
         const errs = res.items.reduce(function (arr, item) {
-          arr.push({ name: name, type: 'error', data: item.html_url })
+          arr.push({ name: name, type: 'fail', data: item.html_url })
           return arr
         }, [])
 
