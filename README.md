@@ -1,4 +1,4 @@
-# org-checks [![stability][0]][1]
+# node-org-checks [![stability][0]][1]
 [![js-standard-style][10]][11]
 
 Organization monitoring and reporting to ensure standards are in place for
@@ -95,10 +95,10 @@ MIT
 [1]: https://nodejs.org/api/documentation.html#documentation_stability_index
 [2]: https://img.shields.io/npm/v/org-checks.svg?style=flat-square
 [3]: https://npmjs.org/package/org-checks
-[4]: https://img.shields.io/travis/TabDigital/org-checks/master.svg?style=flat-square
-[5]: https://travis-ci.org/TabDigital/org-checks
-[6]: https://img.shields.io/codecov/c/github/TabDigital/org-checks/master.svg?style=flat-square
-[7]: https://codecov.io/github/TabDigital/org-checks
+[4]: https://img.shields.io/travis/TabDigital/node-org-checks/master.svg?style=flat-square
+[5]: https://travis-ci.org/TabDigital/node-org-checks
+[6]: https://img.shields.io/codecov/c/github/TabDigital/node-org-checks/master.svg?style=flat-square
+[7]: https://codecov.io/github/TabDigital/node-org-checks
 [8]: http://img.shields.io/npm/dm/org-checks.svg?style=flat-square
 [9]: https://npmjs.org/package/org-checks
 [10]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square
