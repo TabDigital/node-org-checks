@@ -22,7 +22,7 @@ every aspect of an organization.
      │           │          │
  ┌───▼──┐    ┌───▼──┐   ┌───▼──┐
  │ hip- │    │      │   │      │
- │ chat │    │email │   │ html │
+ │ chat │    │ xml  │   │stdout│
  │      │    │      │   │      │
  └──────┘    └──────┘   └──────┘
 ```
@@ -42,6 +42,12 @@ Report to stdout. If `opts.summary=true` it will report a summary only.
 Report a summary to HipChat. Opts has the following fields:
 - __token:__ HipChat authentication token
 - __room:__ room id to report to
+
+### xunit()
+Report a summary in xunit `xml`. Useful to integrate with CI solutions. Unlike
+other reporters, this will be reported as `pass / fail`. Opts has the following
+fields:
+- __output:__ path to write to. Writes to `process.stdout` by default
 
 ## Installation
 ```sh
