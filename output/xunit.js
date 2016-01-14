@@ -12,21 +12,22 @@ module.exports = toXml
 // obj -> null
 function toXml (opts) {
   opts = opts || {}
+  opts.fail = opts.fail === undefined ? true : opts.fail
 
   return function (data, cb) {
+    const rs = fromString(createXml(data, opts))
     const ws = opts.output
       ? fs.createWriteStream(opts.output)
       : stdout
 
-    const rs = fromString(createXml(data))
     pump(rs, ws, cb)
   }
 }
 
 // convert data to xml format
 // reference https://github.com/aghassemi/tap-xunit/tree/master/test/expected
-// obj -> str
-function createXml (data) {
+// ([obj], obj) -> str
+function createXml (data, opts) {
   const prefix = '<?xml version="1.0"?>'
   const nwdata = sort(data)
   const tree = h('testsuites', format(nwdata))
@@ -60,7 +61,7 @@ function createXml (data) {
         name: chunk.summary,
         attributes: {
           tests: chunk.errors.length,
-          failures: chunk.errors.length
+          failures: opts.fail ? chunk.errors.length : 0
         }
       }
       return h('testsuite', meta, chunk.errors.map(function (err) {

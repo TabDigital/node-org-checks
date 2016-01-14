@@ -43,11 +43,12 @@ Report a summary to HipChat. Opts has the following fields:
 - __token:__ HipChat authentication token
 - __room:__ room id to report to
 
-### xunit()
+### xunit(opts)
 Report a summary in xunit `xml`. Useful to integrate with CI solutions. Unlike
 other reporters, this will be reported as `pass / fail`. Opts has the following
 fields:
 - __output:__ path to write to. Writes to `process.stdout` by default
+- __fail:__ determine if errors should be reported. Defaults to `true`
 
 ## Installation
 ```sh
