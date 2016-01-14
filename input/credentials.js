@@ -41,6 +41,10 @@ function awsCredentialScraper (org, auth, opts) {
       uri: 'https://api.github.com/search/code?q=extension:pem+user:' + org
     },
     {
+      name: '.salt',
+      uri: 'https://api.github.com/search/code?q=extension:salt+user:' + org
+    },
+    {
       name: 'x-oauth-basic',
       uri: 'https://api.github.com/search/code?q=x-oauth-basic+user:' + org
     }
