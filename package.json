@@ -29,9 +29,5 @@
     "istanbul": "^0.4.1",
     "standard": "^5.4.1",
     "tape": "^4.4.0"
-  },
-  "files": [
-    "index.js",
-    "bin/*"
-  ]
+  }
 }
