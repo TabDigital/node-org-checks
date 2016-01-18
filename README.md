@@ -34,6 +34,12 @@ following fields:
 - __user:__ GitHub user (required)
 - __token:__ GitHub OpenAuth token (required)
 
+### stale(organization, auth, opts?)
+Check for stale repositories. By default projects are considered stale after 6
+months of no updates. Opts has the following fields:
+- __offset:__ offset in months before a project is considered stale. Defaults
+  to 6
+
 ## Output
 ### stdout(opts)
 Report to stdout. If `opts.summary=true` it will report a summary only.
