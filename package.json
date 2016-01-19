@@ -1,6 +1,6 @@
 {
   "name": "org-checks",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Perform security checks on github",
   "main": "index.js",
   "scripts": {
