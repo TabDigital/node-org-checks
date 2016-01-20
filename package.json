@@ -15,6 +15,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "csv-write-stream": "^1.0.0",
     "from2-string": "^1.1.0",
     "ghutils": "^3.2.0",
     "hipchat-client": "^1.0.4",
