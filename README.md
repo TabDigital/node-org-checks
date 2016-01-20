@@ -56,6 +56,11 @@ fields:
 - __output:__ path to write to. Writes to `process.stdout` by default
 - __fail:__ determine if errors should be reported. Defaults to `true`
 
+### csv(opts)
+Transforms output into a stream of `csv`. Can either write to stdout or a file.
+`opts` has the following fields:
+- __output:__ path to write to. Writes to `process.stdout` by default
+
 ## Installation
 ```sh
 $ git clone https://github.com/TabDigital/org-checks
