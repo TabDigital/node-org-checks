@@ -28,11 +28,14 @@ every aspect of an organization.
 ```
 
 ## Input
-### credentials(organization, opts)
-Check existance of `AWS_KEY`, `.pem`, `id_rsa` and `.key` files. Opts has the
+### credentials(organization, auth, opts)
+Check existance of `AWS_KEY`, `.pem`, `id_rsa` and `.key` files. Auth has the
 following fields:
 - __user:__ GitHub user (required)
 - __token:__ GitHub OpenAuth token (required)
+- __whitelist:__ (optional) Object of arrays of which paths are whitelisted.
+  Entries should have a signature of `{ repo, file }` pointing to the
+  repository and file to be ignored.
 
 ### stale(organization, auth, opts?)
 Check for stale repositories. By default projects are considered stale after 6

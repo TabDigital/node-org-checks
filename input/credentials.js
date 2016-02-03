@@ -13,6 +13,7 @@ function awsCredentialScraper (org, auth, opts) {
   assert.equal(typeof auth.token, 'string', 'auth.token must be a string')
 
   opts = opts || {}
+  if (!opts.whitelist) opts.whitelist = []
 
   const ghOpts = ghutils.makeOptions(auth)
   const uris = [
@@ -69,7 +70,13 @@ function awsCredentialScraper (org, auth, opts) {
         if (res.total_count === 0) return cb(null, [])
 
         const errs = res.items.reduce(function (arr, item) {
-          arr.push({ name: name, type: 'fail', data: item.html_url })
+          // only push if not whitelisted
+          const matches = opts.whitelist.some(function (el) {
+            return el.file === item.path && el.repo === item.repository.name
+          })
+          if (!matches) {
+            arr.push({ name: name, type: 'fail', data: item.html_url })
+          }
           return arr
         }, [])
 
